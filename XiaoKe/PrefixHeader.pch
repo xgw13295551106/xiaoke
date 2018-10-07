@@ -1,0 +1,26 @@
+#import "UIView+Extension.h"
+#import "SVProgressHUD.h"
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#define NYScreenW [UIScreen mainScreen].bounds.size.width
+#define NYScreenH [UIScreen mainScreen].bounds.size.height
+#define NYKeyWindow [UIApplication sharedApplication].keyWindow
+
+#ifdef DEBUG
+#define NYLog(...) NSLog(__VA_ARGS__)
+#else
+#define NYLog(...)
+#endif
+
+/** 版本 */
+#define NYcurrentVersion [[UIDevice currentDevice].systemVersion doubleValue]
+
+/** 版本号key */
+#define NYVersionKey @"NYVersionKey"
+#import "NYHttpTool.h"
+#import "Utils.h"
+#import "UIColor+Hex.h"
+#import "BaseNavigationController.h"
+#import "BaseViewController.h"
+#endif
