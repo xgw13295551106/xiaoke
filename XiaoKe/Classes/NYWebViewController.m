@@ -8,29 +8,31 @@
 
 #import "NYWebViewController.h"
 #import <WebKit/WebKit.h>
-#import "WKWebViewJavascriptBridge.h"
+//#import "WKWebViewJavascriptBridge.h"
 #import "LoginViewController.h"
-@interface NYWebViewController ()<WKUIDelegate, WKNavigationDelegate,WKScriptMessageHandler>
+@interface NYWebViewController ()<WKUIDelegate, WKNavigationDelegate,WKScriptMessageHandler,CLLocationManagerDelegate>
 
 @property (nonatomic, strong) UIButton *backBtn;
-@property WKWebViewJavascriptBridge *webViewBridge;
+//@property WKWebViewJavascriptBridge *webViewBridge;
 @property (nonatomic,strong) WKWebView *webView;
 @property (nonatomic,strong) NSURL *url;
 @property (nonatomic,copy) NSString *backUrlStr;
 @property (nonatomic,copy) NSString *xlogin_appid;
+@property (nonatomic,strong) WKWebViewConfiguration *configuration;
+@property (nonatomic,copy) NSString *log_id; //支付宝支付完成之后 跳转的页面id
+
+@property (nonatomic,strong) NSDictionary *locationInfo;
+
 @end
 //
 @implementation NYWebViewController
 
 -(instancetype)init{
     if(self = [super init]){
+
         self.webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
-        self.webView.scrollView.bounces = NO;
-        self.webView.scrollView.showsHorizontalScrollIndicator = NO;
-        self.webView.scrollView.showsVerticalScrollIndicator = NO;
-        //更改ua
+        //更改ua 区分是手机app 还是其他浏览器
         __weak typeof(self) weakSelf = self;
-        
         [self.webView evaluateJavaScript:@"navigator.userAgent" completionHandler:^(id result, NSError *error) {
             __strong typeof(weakSelf) strongSelf = weakSelf;
             NSString *userAgent = result;
@@ -38,44 +40,83 @@
             NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:newUserAgent, @"UserAgent", nil];
             [[NSUserDefaults standardUserDefaults] registerDefaults:dictionary];
             strongSelf.webView = [[WKWebView alloc] initWithFrame:strongSelf.view.bounds];
-            //加载页面
-            NSString *userToken = [Utils getUserToken];
-            if (userToken.length >0) {
-                self.url = [[NSURL alloc]initWithString:[NSString stringWithFormat:@"http://shopke.cn/mobile/user.php?app_token=%@",userToken]];
-            }else{
-                self.url = [NSURL URLWithString:@"http://shopke.cn/mobile/default.php"];  //http://shopke.cn/mobile/user.php?act=login&test=1 http://shopke.cn/mobile/default.php
-            }
+            strongSelf.webView.scrollView.bounces = NO;
+            strongSelf.webView.scrollView.showsHorizontalScrollIndicator = NO;
+            strongSelf.webView.scrollView.showsVerticalScrollIndicator = NO;
+            [strongSelf cleanCookie];
             
+            //加载页面
+          NSString *userToken = [Utils getUserToken];
+//            if (userToken.length >0) {
+//                self.url = [[NSURL alloc]initWithString:@"http://shopke.cn/mobile/test.php"]; //测试js传值
+//            }else{
+//                self.url = [NSURL URLWithString:@"http://shopke.cn/mobile/test.php"];
+//            }
+            
+            if (userToken.length >0) {
+                strongSelf.url = [[NSURL alloc]initWithString:[NSString stringWithFormat:@"http://shopke.cn/mobile/user.php?app_token=%@",userToken]];
+            }else{
+                strongSelf.url = [NSURL URLWithString:@"http://shopke.cn/mobile/default.php"];
+            }
+
             NSURLRequest *request = [[NSURLRequest alloc]initWithURL:self.url];
             [strongSelf.webView loadRequest:request];
-            [self.view addSubview: self.webView];
+            [strongSelf.view addSubview: self.webView];
+            
             //js交互
-            WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
-            configuration.userContentController = [WKUserContentController new];
-              _webViewBridge = [WKWebViewJavascriptBridge bridgeForWebView:self.webView];
-            [_webViewBridge setWebViewDelegate:self.webView];
-            self.webView.navigationDelegate = self;
-            [self.webView.configuration.userContentController addScriptMessageHandler:self name:@"iosLogin"];
-            [self.webView.configuration.userContentController addScriptMessageHandler:self name:@"iosLogout"];
+            strongSelf.configuration = [[WKWebViewConfiguration alloc] init];
+            strongSelf.configuration.userContentController = [WKUserContentController new];
+            strongSelf.webView.navigationDelegate = self;
+            [strongSelf.webView.configuration.userContentController addScriptMessageHandler:self name:@"iosLogin"];
+            [strongSelf.webView.configuration.userContentController addScriptMessageHandler:self name:@"iosLogout"];
+            [strongSelf.webView.configuration.userContentController addScriptMessageHandler:self name:@"AliPay"];
+            [strongSelf.webView.configuration.userContentController addScriptMessageHandler:self name:@"native_WXPay"];
+            
             [strongSelf.webView evaluateJavaScript:@"navigator.userAgent" completionHandler:^(id result, NSError *error) {
-                NSLog(@"======%@", result);
+                NYLog(@"======%@", result);
                 
             }];
         }];
-        //
+        
+        //注册通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LoginRefershWebView:) name:@"LoginSuccess" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RegisterRefershWebView) name:@"RegisterSuccess" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(PaySuccess) name:@"PaySuccess" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(PayCancel) name:@"PayCancel" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(GetcurrentLocation:) name:@"GetcurrentLocation" object:nil];
 
-        //创建返回按钮
-        self.backBtn = [[UIButton alloc]initWithFrame:CGRectMake(NYScreenW-90, NYScreenH - 140, 90, 63)];
-        [self.backBtn addTarget:self action:@selector(goBackClick:) forControlEvents:UIControlEventTouchUpInside];
-        //[self.backBtn setImage:[UIImage imageNamed:@"backc"] forState:UIControlStateNormal];
-        //self.backBtn.hidden = YES;
-        //self.backBtn.backgroundColor = [UIColor redColor];
-        [self.view addSubview:self.backBtn];
-        
     }
     return self;
+}
+- (void)dealloc
+{
+    [self.webView.configuration.userContentController removeScriptMessageHandlerForName:@"iosLogin"];
+    [self.webView.configuration.userContentController removeScriptMessageHandlerForName:@"iosLogout"];
+    [self.webView.configuration.userContentController removeScriptMessageHandlerForName:@"AliPay"];
+    [self.webView.configuration.userContentController removeScriptMessageHandlerForName:@"native_WXPay"];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"LoginSuccess" object:nil];
+     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RegisterSuccess" object:nil];
+     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PaySuccess" object:nil];
+     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PayCancel" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"GetcurrentLocation" object:nil];
+}
+- (void)GetcurrentLocation:(NSNotification *)noti
+{
+     self.locationInfo = noti.userInfo;
+   
+}
+- (void)PaySuccess
+{
+    if (self.log_id.length >0 ) {
+        NSURL *paySuccess = [[NSURL alloc]initWithString:[NSString stringWithFormat:@"http://shopke.cn/mobile/return_alipay.php?log_id=%@",self.log_id]];
+        NSURLRequest *request = [[NSURLRequest alloc]initWithURL:paySuccess];
+        [self.webView loadRequest:request];
+    }
+}
+- (void)PayCancel
+{
+    [self.webView goBack];
 }
 - (void)LoginRefershWebView:(NSNotification *)notification
 {
@@ -86,7 +127,7 @@
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?app_token=%@", self.backUrlStr, [Utils getUserToken]]]]];
     }
     
-    
+
 }
 
 - (void)RegisterRefershWebView
@@ -107,15 +148,37 @@
     }
     if([message.name isEqualToString:@"iosLogout"]){
         [Utils setUserToken:@""];
-
+        [self cleanCookie];
+    }
+    if([message.name isEqualToString:@"AliPay"]){
+        self.log_id = body[@"log_id"];
+            [[AlipaySDK defaultService] payOrder:body[@"payOrder"] fromScheme:@"xiaoke" callback:^(NSDictionary* resultDic) {
+        //如果h唤起h5页面支付同步回调会从这里走
+            NYLog(@"%@",resultDic);
+        
+            }];
+    }
+    if ([message.name isEqualToString:@"native_WXPay"]) {
+        self.log_id = body[@"log_id"];
+        NSDictionary *dict = body[@"payOrder"];
+        PayReq *req = [[PayReq alloc] init];
+        req.partnerId = dict[@"partnerid"];
+        req.prepayId = dict[@"prepayid"];
+        req.nonceStr = dict[@"noncestr"];
+        req.timeStamp = [dict[@"timestamp"] unsignedIntValue];
+        req.package = dict[@"package"];
+        req.sign = dict[@"sign"];
+        
+        if (![WXApi sendReq:req]) {
+            [Utils showTipsWithHUD:@"支付失败，无法打开微信支付。"];
+            
+        }else{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccess" object:nil];
+        }
     }
     
 }
-- (void)dealloc
-{
-    [self.webView.configuration.userContentController removeScriptMessageHandlerForName:@"iosLogin"]; //
-    [self.webView.configuration.userContentController removeScriptMessageHandlerForName:@"iosLogout"];
-}
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     //隐藏导航栏
@@ -131,8 +194,7 @@
 }
 
 #pragma mark - WKWebView代理
-
-//微信h5支付
+//微信h5支付（弃用，改成app原生微信支付）
 - (void)webView:(WKWebView*)webView decidePolicyForNavigationAction:(WKNavigationAction*)navigationAction decisionHandler:(void(^)(WKNavigationActionPolicy))decisionHandler{
     NSURLRequest *request = navigationAction.request;
     if ([request.URL.absoluteString hasPrefix:@"weixin://"]) {
@@ -153,35 +215,22 @@
 }
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation
 {
+   
+    NYLog(@"=====%@",[NSString stringWithFormat:@"%@",webView.URL]);
+    NSString *locStr = [NSString stringWithFormat:@"%@,%@,'%@'",self.locationInfo[@"lng"],self.locationInfo[@"lat"],self.locationInfo[@"city"]];
+    NSString * jsStr  =[NSString stringWithFormat:@"save_loc('%@')",locStr];
+    [webView evaluateJavaScript:jsStr completionHandler:^(id _Nullable result, NSError * _Nullable error) {
+        NYLog(@"%@",result);
+    }];
+   
     
-    
-//    NSString *strUrl = [NSString stringWithFormat:@"%@",webView.URL];
-//    NSString *str1 = @"shopke.cn/mobile/default.php";
-//    NSString *str2 = @"shopke.cn/o/default.php";
-//
-//    if (strUrl.length) {
-//        if ([strUrl rangeOfString:str1].location != NSNotFound) {
-//            NYLog(@"strURL === %@ 包含str1 %@ ",strUrl ,str1);
-//            self.backBtn.hidden = YES;
-//
-//
-//        }else{
-//            NYLog(@"不包含 %@", strUrl);
-//
-//            if ([strUrl rangeOfString:str2].location != NSNotFound) {
-//                NYLog(@"strURL === %@ 包含str2 %@ ",strUrl ,str2);
-//                self.backBtn.hidden = YES;
-//
-//
-//            }else{
-//                self.backBtn.hidden = NO;
-//            }
-//        }
-//
-//    }else{
-//
-//        self.backBtn.hidden = YES;
-//    }
 }
-
+- (void)cleanCookie
+{
+    NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    NSArray *cookieArray = [NSArray arrayWithArray:[cookieJar cookies]];
+    for (id obj in cookieArray) {
+        [cookieJar deleteCookie:obj];
+    }
+}
 @end

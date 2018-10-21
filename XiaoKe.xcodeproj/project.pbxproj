@@ -27,12 +27,34 @@
 		131CE79C215CB18700DB4FC2 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 131CE79B215CB18600DB4FC2 /* UIColor+Hex.m */; };
 		131CE7A0215CC62100DB4FC2 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 131CE79F215CC62100DB4FC2 /* BaseNavigationController.m */; };
 		131CE7A3215CC6DB00DB4FC2 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 131CE7A2215CC6DB00DB4FC2 /* BaseViewController.m */; };
+		13477C83216CA317003F5F46 /* PayMethodListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13477C81216CA317003F5F46 /* PayMethodListController.m */; };
+		13477C84216CA317003F5F46 /* PayMethodListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13477C82216CA317003F5F46 /* PayMethodListController.xib */; };
+		134A03EA216AEF1D00F75622 /* AppDelegate+AliPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 134A03E9216AEF1D00F75622 /* AppDelegate+AliPay.m */; };
+		134A03ED216AF58100F75622 /* AppDelegate+WXPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 134A03EC216AF58100F75622 /* AppDelegate+WXPay.m */; };
+		1350E26C2175B10B00F0FBB1 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C1A5ED2169E6460081F156 /* AlipaySDK.framework */; };
+		1350E2712175B19B00F0FBB1 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1350E26F2175B19B00F0FBB1 /* AlipaySDK.bundle */; };
+		1350E2722175B19B00F0FBB1 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1350E2702175B19B00F0FBB1 /* AlipaySDK.framework */; };
+		137796D6217C26CB006EE103 /* MBProgressHUD+Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 137796D2217C26CB006EE103 /* MBProgressHUD+Show.m */; };
+		137796D7217C26CB006EE103 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 137796D3217C26CB006EE103 /* MBProgressHUD.bundle */; };
+		137796D8217C26CB006EE103 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 137796D5217C26CB006EE103 /* MBProgressHUD.m */; };
 		13B94C82215A2439003D69BA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B94C80215A2439003D69BA /* LoginViewController.m */; };
 		13B94C83215A2439003D69BA /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B94C81215A2439003D69BA /* LoginViewController.xib */; };
 		13B94C87215A251D003D69BA /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B94C85215A251D003D69BA /* RegisterViewController.m */; };
 		13B94C88215A251D003D69BA /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B94C86215A251D003D69BA /* RegisterViewController.xib */; };
 		13B94C8C215A2864003D69BA /* FindPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B94C8A215A2864003D69BA /* FindPasswordViewController.m */; };
 		13B94C8D215A2864003D69BA /* FindPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B94C8B215A2864003D69BA /* FindPasswordViewController.xib */; };
+		13C1A5F02169E69D0081F156 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C1A5EF2169E69D0081F156 /* libc++.tbd */; };
+		13C1A5F22169E6A70081F156 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C1A5F12169E6A70081F156 /* libz.tbd */; };
+		13C1A5F42169E6B10081F156 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C1A5F32169E6B10081F156 /* SystemConfiguration.framework */; };
+		13C1A5F62169E6BB0081F156 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C1A5F52169E6BB0081F156 /* CoreTelephony.framework */; };
+		13C1A5F82169E6C50081F156 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C1A5F72169E6C50081F156 /* QuartzCore.framework */; };
+		13C1A5FA2169E6D20081F156 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C1A5F92169E6D20081F156 /* CoreText.framework */; };
+		13C1A5FC2169E6DC0081F156 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C1A5FB2169E6DC0081F156 /* CoreGraphics.framework */; };
+		13C1A5FE2169E6E70081F156 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C1A5FD2169E6E60081F156 /* UIKit.framework */; };
+		13C1A6002169E6F30081F156 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C1A5FF2169E6F30081F156 /* Foundation.framework */; };
+		13C1A6022169E6FC0081F156 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C1A6012169E6FC0081F156 /* CFNetwork.framework */; };
+		13C1A6042169E7060081F156 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C1A6032169E7060081F156 /* CoreMotion.framework */; };
+		13D91EEC2174688800ECE13D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13D91EEB2174688800ECE13D /* CoreLocation.framework */; };
 		6A634F06A8EEECD2B9F193EF /* Pods_XiaoKe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90A68ED13F8DE0CD4A7E219 /* Pods_XiaoKe.framework */; };
 		810B00451C75682500021EA1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 810B00441C75682500021EA1 /* main.m */; };
 		810B00481C75682500021EA1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 810B00471C75682500021EA1 /* AppDelegate.m */; };
@@ -106,6 +128,20 @@
 		131CE79F215CC62100DB4FC2 /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		131CE7A1215CC6DB00DB4FC2 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		131CE7A2215CC6DB00DB4FC2 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		13477C80216CA317003F5F46 /* PayMethodListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayMethodListController.h; sourceTree = "<group>"; };
+		13477C81216CA317003F5F46 /* PayMethodListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayMethodListController.m; sourceTree = "<group>"; };
+		13477C82216CA317003F5F46 /* PayMethodListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayMethodListController.xib; sourceTree = "<group>"; };
+		134A03E8216AEF1D00F75622 /* AppDelegate+AliPay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+AliPay.h"; sourceTree = "<group>"; };
+		134A03E9216AEF1D00F75622 /* AppDelegate+AliPay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+AliPay.m"; sourceTree = "<group>"; };
+		134A03EB216AF58100F75622 /* AppDelegate+WXPay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+WXPay.h"; sourceTree = "<group>"; };
+		134A03EC216AF58100F75622 /* AppDelegate+WXPay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+WXPay.m"; sourceTree = "<group>"; };
+		1350E26F2175B19B00F0FBB1 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		1350E2702175B19B00F0FBB1 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		137796D1217C26CB006EE103 /* MBProgressHUD+Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Show.h"; sourceTree = "<group>"; };
+		137796D2217C26CB006EE103 /* MBProgressHUD+Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Show.m"; sourceTree = "<group>"; };
+		137796D3217C26CB006EE103 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
+		137796D4217C26CB006EE103 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		137796D5217C26CB006EE103 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		13B94C7F215A2439003D69BA /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		13B94C80215A2439003D69BA /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		13B94C81215A2439003D69BA /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -115,6 +151,19 @@
 		13B94C89215A2864003D69BA /* FindPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindPasswordViewController.h; sourceTree = "<group>"; };
 		13B94C8A215A2864003D69BA /* FindPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindPasswordViewController.m; sourceTree = "<group>"; };
 		13B94C8B215A2864003D69BA /* FindPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FindPasswordViewController.xib; sourceTree = "<group>"; };
+		13C1A5ED2169E6460081F156 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlipaySDK.framework; path = "XiaoKe/ThirdLib/支付宝支付/AlipaySDK.framework"; sourceTree = "<group>"; };
+		13C1A5EF2169E69D0081F156 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		13C1A5F12169E6A70081F156 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		13C1A5F32169E6B10081F156 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		13C1A5F52169E6BB0081F156 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		13C1A5F72169E6C50081F156 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		13C1A5F92169E6D20081F156 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		13C1A5FB2169E6DC0081F156 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		13C1A5FD2169E6E60081F156 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		13C1A5FF2169E6F30081F156 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		13C1A6012169E6FC0081F156 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		13C1A6032169E7060081F156 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		13D91EEB2174688800ECE13D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		810B00401C75682500021EA1 /* 潇客.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "潇客.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		810B00441C75682500021EA1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		810B00461C75682500021EA1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -149,6 +198,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1350E26C2175B10B00F0FBB1 /* AlipaySDK.framework in Frameworks */,
+				13D91EEC2174688800ECE13D /* CoreLocation.framework in Frameworks */,
+				13C1A6042169E7060081F156 /* CoreMotion.framework in Frameworks */,
+				13C1A6022169E6FC0081F156 /* CFNetwork.framework in Frameworks */,
+				13C1A6002169E6F30081F156 /* Foundation.framework in Frameworks */,
+				13C1A5FE2169E6E70081F156 /* UIKit.framework in Frameworks */,
+				13C1A5FC2169E6DC0081F156 /* CoreGraphics.framework in Frameworks */,
+				13C1A5FA2169E6D20081F156 /* CoreText.framework in Frameworks */,
+				13C1A5F82169E6C50081F156 /* QuartzCore.framework in Frameworks */,
+				13C1A5F62169E6BB0081F156 /* CoreTelephony.framework in Frameworks */,
+				13C1A5F42169E6B10081F156 /* SystemConfiguration.framework in Frameworks */,
+				1350E2722175B19B00F0FBB1 /* AlipaySDK.framework in Frameworks */,
+				13C1A5F22169E6A70081F156 /* libz.tbd in Frameworks */,
+				13C1A5F02169E69D0081F156 /* libc++.tbd in Frameworks */,
 				6A634F06A8EEECD2B9F193EF /* Pods_XiaoKe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,6 +249,8 @@
 		130BDB1B215B31E5004FDECE /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				137796D0217C26CB006EE103 /* MBprogressHUD */,
+				13C1A5E82169E4E90081F156 /* AliPay */,
 				130BDB20215B83D5004FDECE /* IQKeyboardManager */,
 				130BDB1C215B3242004FDECE /* MD5 */,
 			);
@@ -288,6 +353,18 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		137796D0217C26CB006EE103 /* MBprogressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				137796D1217C26CB006EE103 /* MBProgressHUD+Show.h */,
+				137796D2217C26CB006EE103 /* MBProgressHUD+Show.m */,
+				137796D3217C26CB006EE103 /* MBProgressHUD.bundle */,
+				137796D4217C26CB006EE103 /* MBProgressHUD.h */,
+				137796D5217C26CB006EE103 /* MBProgressHUD.m */,
+			);
+			path = MBprogressHUD;
+			sourceTree = "<group>";
+		};
 		13B94C7E215A23D6003D69BA /* 登录注册 */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,9 +381,31 @@
 			path = "登录注册";
 			sourceTree = "<group>";
 		};
+		13C1A5E82169E4E90081F156 /* AliPay */ = {
+			isa = PBXGroup;
+			children = (
+				1350E26F2175B19B00F0FBB1 /* AlipaySDK.bundle */,
+				1350E2702175B19B00F0FBB1 /* AlipaySDK.framework */,
+			);
+			path = AliPay;
+			sourceTree = "<group>";
+		};
 		3643EEDABCCD9FFCD9D0EF36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				13D91EEB2174688800ECE13D /* CoreLocation.framework */,
+				13C1A6032169E7060081F156 /* CoreMotion.framework */,
+				13C1A6012169E6FC0081F156 /* CFNetwork.framework */,
+				13C1A5FF2169E6F30081F156 /* Foundation.framework */,
+				13C1A5FD2169E6E60081F156 /* UIKit.framework */,
+				13C1A5FB2169E6DC0081F156 /* CoreGraphics.framework */,
+				13C1A5F92169E6D20081F156 /* CoreText.framework */,
+				13C1A5F72169E6C50081F156 /* QuartzCore.framework */,
+				13C1A5F52169E6BB0081F156 /* CoreTelephony.framework */,
+				13C1A5F32169E6B10081F156 /* SystemConfiguration.framework */,
+				13C1A5F12169E6A70081F156 /* libz.tbd */,
+				13C1A5EF2169E69D0081F156 /* libc++.tbd */,
+				13C1A5ED2169E6460081F156 /* AlipaySDK.framework */,
 				C90A68ED13F8DE0CD4A7E219 /* Pods_XiaoKe.framework */,
 			);
 			name = Frameworks;
@@ -340,6 +439,10 @@
 				130BDB1B215B31E5004FDECE /* ThirdLib */,
 				810B00461C75682500021EA1 /* AppDelegate.h */,
 				810B00471C75682500021EA1 /* AppDelegate.m */,
+				134A03E8216AEF1D00F75622 /* AppDelegate+AliPay.h */,
+				134A03E9216AEF1D00F75622 /* AppDelegate+AliPay.m */,
+				134A03EB216AF58100F75622 /* AppDelegate+WXPay.h */,
+				134A03EC216AF58100F75622 /* AppDelegate+WXPay.m */,
 				810B008D1C75689C00021EA1 /* PrefixHeader.pch */,
 				810B00791C75688E00021EA1 /* Classes */,
 				810B004F1C75682500021EA1 /* Assets.xcassets */,
@@ -381,6 +484,9 @@
 				131CE79D215CC5E100DB4FC2 /* Base */,
 				810B00761C75688700021EA1 /* NYWebViewController.h */,
 				810B00771C75688700021EA1 /* NYWebViewController.m */,
+				13477C80216CA317003F5F46 /* PayMethodListController.h */,
+				13477C81216CA317003F5F46 /* PayMethodListController.m */,
+				13477C82216CA317003F5F46 /* PayMethodListController.xib */,
 				13B94C7E215A23D6003D69BA /* 登录注册 */,
 				810B008E1C756CCB00021EA1 /* Tool(工具) */,
 				810B007A1C75688E00021EA1 /* Category */,
@@ -508,6 +614,11 @@
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 675MD2T3QK;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					810B00581C75682500021EA1 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -544,7 +655,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13477C84216CA317003F5F46 /* PayMethodListController.xib in Resources */,
+				137796D7217C26CB006EE103 /* MBProgressHUD.bundle in Resources */,
 				130BDB50215B83D5004FDECE /* IQKeyboardManager.bundle in Resources */,
+				1350E2712175B19B00F0FBB1 /* AlipaySDK.bundle in Resources */,
 				13B94C83215A2439003D69BA /* LoginViewController.xib in Resources */,
 				810B00501C75682500021EA1 /* Assets.xcassets in Resources */,
 				13B94C8D215A2864003D69BA /* FindPasswordViewController.xib in Resources */,
@@ -604,7 +718,6 @@
 				"${BUILT_PRODUCTS_DIR}/JSONModel/JSONModel.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/WebViewJavascriptBridge/WebViewJavascriptBridge.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -615,7 +728,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONModel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebViewJavascriptBridge.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -641,18 +753,23 @@
 				130BDB4C215B83D5004FDECE /* IQPreviousNextView.m in Sources */,
 				131CE7A0215CC62100DB4FC2 /* BaseNavigationController.m in Sources */,
 				130BDB1A215B2F62004FDECE /* Utils.m in Sources */,
+				13477C83216CA317003F5F46 /* PayMethodListController.m in Sources */,
 				810B00891C75688E00021EA1 /* UIBarButtonItem+Item.m in Sources */,
 				130BDB4E215B83D5004FDECE /* IQToolbar.m in Sources */,
 				130BDB4F215B83D5004FDECE /* IQUIView+IQKeyboardToolbar.m in Sources */,
+				134A03ED216AF58100F75622 /* AppDelegate+WXPay.m in Sources */,
 				13B94C8C215A2864003D69BA /* FindPasswordViewController.m in Sources */,
 				131CE79C215CB18700DB4FC2 /* UIColor+Hex.m in Sources */,
 				810B00781C75688700021EA1 /* NYWebViewController.m in Sources */,
 				13B94C87215A251D003D69BA /* RegisterViewController.m in Sources */,
+				137796D6217C26CB006EE103 /* MBProgressHUD+Show.m in Sources */,
 				1305E3E8215E035A006B7624 /* CustomAlertView.m in Sources */,
 				130BDB4D215B83D5004FDECE /* IQTitleBarButtonItem.m in Sources */,
 				130BDB1F215B3242004FDECE /* MyMD5.m in Sources */,
+				134A03EA216AEF1D00F75622 /* AppDelegate+AliPay.m in Sources */,
 				13B94C82215A2439003D69BA /* LoginViewController.m in Sources */,
 				130BDB4A215B83D5004FDECE /* IQTextView.m in Sources */,
+				137796D8217C26CB006EE103 /* MBProgressHUD.m in Sources */,
 				130BDB43215B83D5004FDECE /* IQNSArray+Sort.m in Sources */,
 				130BDB46215B83D5004FDECE /* IQUIView+Hierarchy.m in Sources */,
 				810B00961C756CCB00021EA1 /* NYHttpTool.m in Sources */,
@@ -786,10 +903,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				ASSET_PACK_MANIFEST_URL_PREFIX = "/Users/IOS/Desktop/app/潇客/XiaoKe/XiaoKe/PrefixHeader.pch";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 675MD2T3QK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/XiaoKe/ThirdLib/AliPay",
+					"$(PROJECT_DIR)/XiaoKe/ThirdLib/支付宝支付",
+					"$(PROJECT_DIR)/XiaoKe/ThirdLib",
+				);
 				GCC_ENABLE_BUILTIN_FUNCTIONS = NO;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -816,6 +939,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 675MD2T3QK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/XiaoKe/ThirdLib/AliPay",
+					"$(PROJECT_DIR)/XiaoKe/ThirdLib/支付宝支付",
+					"$(PROJECT_DIR)/XiaoKe/ThirdLib",
+				);
 				GCC_ENABLE_BUILTIN_FUNCTIONS = NO;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;

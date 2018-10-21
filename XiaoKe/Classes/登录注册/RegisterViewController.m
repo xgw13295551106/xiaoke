@@ -34,10 +34,7 @@
             self.agreementStr = responseObject[@"content"];
             
         }else{
-            [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [SVProgressHUD dismiss];
-            });
+            [Utils showTipsWithHUD:responseObject[@"message"]];
             
         }
     } failure:^(NSError *error) {
@@ -49,7 +46,7 @@
 - (IBAction)sendCode:(UIButton *)sender {
     
     if (![Utils islegalPhoneNum:self.userPhone.text]) {
-        [SVProgressHUD showErrorWithStatus:@"请输入您的正确手机号"];
+        [Utils showTipsWithHUD:@"请输入您的正确手机号"];
         return;
     }
     
@@ -98,10 +95,7 @@
             dispatch_resume(_timer);
             
         }else{
-            [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [SVProgressHUD dismiss];
-            });
+            [Utils showTipsWithHUD:responseObject[@"message"]];
             
         }
     } failure:^(NSError *error) {
@@ -115,19 +109,19 @@
 
 - (IBAction)RegiserAction:(UIButton *)sender {
     if (! self.agreeBtn.selected) {
-        [SVProgressHUD showErrorWithStatus:@"请勾选潇客shopke服务协议"];
+        [Utils showTipsWithHUD:@"请勾选潇客shopke服务协议"];
         return;
     }
     if (![Utils islegalPhoneNum:self.inviterPhone.text]) {
-        [SVProgressHUD showErrorWithStatus:@"请输入正确的邀请人手机号"];
+        [Utils showTipsWithHUD:@"请输入正确的邀请人手机号"];
         return;
     }
     if (![Utils islegalPhoneNum:self.userPhone.text]) {
-        [SVProgressHUD showErrorWithStatus:@"请输入您的正确手机号"];
+         [Utils showTipsWithHUD:@"请输入您的正确手机号"];
         return;
     }
     if (![Utils islegalPasswords:self.passwordsField.text]) {
-        [SVProgressHUD showErrorWithStatus:@"请输入正确格式的密码"];
+        [Utils showTipsWithHUD:@"请输入正确格式的密码"];
         return;
     }
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -142,17 +136,10 @@
             [Utils setUserToken:responseObject[@"token"]];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"RegisterSuccess" object:nil];
             [self.navigationController popToRootViewControllerAnimated:YES];
-            [SVProgressHUD showSuccessWithStatus:@"注册成功"];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [SVProgressHUD dismiss];
-            });
+            [Utils showTipsWithHUD:@"注册成功"];
             
         }else{
-            [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [SVProgressHUD dismiss];
-            });
-            
+            [Utils showTipsWithHUD:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
         

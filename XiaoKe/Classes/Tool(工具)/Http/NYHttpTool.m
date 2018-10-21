@@ -54,15 +54,12 @@
     [manager POST:URLString parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         NYLog(@"task.response.URL = %@  参数 = %@",task.response.URL,parameters);
-        
-        [SVProgressHUD dismiss];
         if (success) {
             NYLog(@"responseObject == %@",responseObject);
             success(responseObject);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [SVProgressHUD dismiss];
-        [SVProgressHUD showErrorWithStatus:@"网络异常"];
+        [Utils showTipsWithHUD:@"网络异常"];
         NYLog(@"%s error = %@ task = %@", __func__, error ,task);
         if (failure) {
             failure(error);
@@ -88,15 +85,14 @@
     } progress:^(NSProgress * _Nonnull uploadProgress) {}  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NYLog(@"task.response.URL = %@  参数 = %@",task.response.URL,parameters);
         
-        [SVProgressHUD dismiss];
         if (success) {
             NYLog(@"responseObject == %@",responseObject);
             success(responseObject);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failure) {
-            [SVProgressHUD dismiss];
-            [SVProgressHUD showErrorWithStatus:@"网络异常"];
+            
+            [Utils showTipsWithHUD:@"网络异常"];
             NYLog(@"%s error = %@ task = %@", __func__, error ,task);
             failure(error);
         }
@@ -126,7 +122,6 @@
     } progress:^(NSProgress * _Nonnull uploadProgress) {}  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NYLog(@"task.response.URL = %@  参数 = %@",task.response.URL,parameters);
         
-        [SVProgressHUD dismiss];
         if (success) {
             NYLog(@"responseObject == %@",responseObject);
             success(responseObject);
@@ -134,8 +129,7 @@
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failure) {
-            [SVProgressHUD dismiss];
-            [SVProgressHUD showErrorWithStatus:@"网络异常"];
+            [Utils showTipsWithHUD:@"网络异常"];
             NYLog(@"%s error = %@ task = %@", __func__, error ,task);
             failure(error);
 

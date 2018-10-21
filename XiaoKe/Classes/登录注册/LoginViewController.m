@@ -27,6 +27,7 @@
 - (IBAction)register:(UIButton *)sender {
     RegisterViewController *ctrl = [[RegisterViewController alloc] init];
     [self.navigationController pushViewController:ctrl animated:YES];
+
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -35,11 +36,11 @@
 }
 - (IBAction)loginIn:(UIButton *)sender {
     if (![Utils islegalPhoneNum:self.userNameField.text]) {
-        [SVProgressHUD showErrorWithStatus:@"请输入正确的用户名"];
+        [Utils showTipsWithHUD:@"请输入正确的用户名"];
         return;
     }
     if (self.passwordsField.text.length == 0) {
-        [SVProgressHUD showErrorWithStatus:@"请输入密码"];
+        [Utils showTipsWithHUD:@"请输入密码"];
         return;
     }
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -62,18 +63,10 @@
                  postNotificationName:@"LoginSuccess" object:nil];
                 [self.navigationController popViewControllerAnimated:YES];
             }
-            
-            [SVProgressHUD showSuccessWithStatus:@"登录成功"];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [SVProgressHUD dismiss];
-            });
-            
+            [Utils showTipsWithHUD:@"登录成功"];
+
         }else{
-            [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [SVProgressHUD dismiss];
-            });
-            
+            [Utils showTipsWithHUD:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
         

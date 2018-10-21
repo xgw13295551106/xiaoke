@@ -6,9 +6,8 @@ target ‘XiaoKe’ do
 
 pod 'AFNetworking', '~> 3.0'
 pod 'SDWebImage', '~>3.7'
-pod 'SVProgressHUD'
 pod 'WebViewJavascriptBridge', '~> 5.0'
 pod 'MJRefresh'
 pod 'JSONModel'
-
+pod 'WechatOpenSDK'
 end

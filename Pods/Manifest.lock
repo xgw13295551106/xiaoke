@@ -19,16 +19,16 @@ PODS:
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
-  - SVProgressHUD (1.1.3)
   - WebViewJavascriptBridge (5.2.0)
+  - WechatOpenSDK (1.8.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - JSONModel
   - MJRefresh
   - SDWebImage (~> 3.7)
-  - SVProgressHUD
   - WebViewJavascriptBridge (~> 5.0)
+  - WechatOpenSDK
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -36,17 +36,17 @@ SPEC REPOS:
     - JSONModel
     - MJRefresh
     - SDWebImage
-    - SVProgressHUD
     - WebViewJavascriptBridge
+    - WechatOpenSDK
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
-  SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
   WebViewJavascriptBridge: a00b2d61252aec5207e3263d46fd0fd3cfaf7895
+  WechatOpenSDK: 676feec516a11173eafd1fe64b10d27babf28701
 
-PODFILE CHECKSUM: 2b7d293ab3096b01f6266f9f8a09cd5115a7b88e
+PODFILE CHECKSUM: 15ba50faf775052a7d97422d059dbdde29af9742
 
 COCOAPODS: 1.5.3

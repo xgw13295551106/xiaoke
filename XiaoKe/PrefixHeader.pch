@@ -1,5 +1,4 @@
 #import "UIView+Extension.h"
-#import "SVProgressHUD.h"
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
@@ -23,4 +22,8 @@
 #import "UIColor+Hex.h"
 #import "BaseNavigationController.h"
 #import "BaseViewController.h"
+#import <WXApi.h>
+#import <AlipaySDK/AlipaySDK.h>
+#import<CoreLocation/CoreLocation.h>
+#import "MBProgressHUD.h"
 #endif
